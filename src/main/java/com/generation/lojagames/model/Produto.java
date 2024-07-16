@@ -1,6 +1,5 @@
 package com.generation.lojagames.model;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -15,22 +14,21 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "tb_produtos")
 public class Produto {
-	
-    
-    @Id
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank(message = "O atributo nome do Produto é Obrigatório!")
 	@Size(min = 5, max = 80, message = "O atributo nome do Produto deve conter no mínimo 05 e no máximo 80 caracteres")
 	private String nome;
-	
+
 	@NotBlank(message = "O atributo descrição do Produto é Obrigatório!")
 	@Size(min = 10, max = 1000, message = "O atributo descrição deve conter no mínimo 10 e no máximo 1000 caracteres")
 	private String descricao;
-	
+
 	private String urlFoto;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
@@ -74,6 +72,5 @@ public class Produto {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
- 
 
 }
